@@ -105,14 +105,14 @@ python manage.py runserver
 ```
 
 ## How to exit
-```
+```bash
 # exit server
 ctrl + C
 
 # close Redis
 redis-cli shutdown
 
-#exit virtualenv
+# exit virtualenv
 deactivate
 
 ```
