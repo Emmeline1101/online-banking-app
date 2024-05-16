@@ -4,9 +4,10 @@ This is an Online Banking System created using Django Web Framework. And we inte
 
 
 ## Features
-
-* Create Bank Account.
+**Features asked by SWE266P course:**
+* Create a Bank Account.
 * Deposit & Withdraw Money
+**Other features:**
 * Bank Account Type Support (e.g. Current Account, Savings Account)
 * Interest calculation depending on the Bank Account type
 * Transaction report with a date range filter 
