@@ -16,6 +16,17 @@ This is an Online Banking System created using Django Web Framework. And we inte
 * Ability to add Minimum and Maximum Transaction amount restriction
 * Modern UI with Tailwind CSS
 
+## LOC
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Python                          30            241             76            797
+HTML                             9             21              3            421
+Markdown                         1             26              0             75
+Text                             1              0              0              5
+-------------------------------------------------------------------------------
+SUM:                            41            288             79           1298
+-------------------------------------------------------------------------------
 
 ## Prerequisites
 
