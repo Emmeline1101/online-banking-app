@@ -94,8 +94,31 @@ celery -A banking_system worker -l info
 
 celery -A banking_system beat -l info
 ```
+## How to relogin the system after the first trial (already install dependencies)
+```bash
+# active virtualenv
+source /path/to/venv/bin/activate
 
+# run server
+python manage.py runserver
+
+```
+
+## How to exit
+```
+# exit server
+ctrl + C
+
+# close Redis
+redis-cli shutdown
+
+#exit virtualenv
+deactivate
+
+```
 ## Images:
 ![alt text](https://i.imgur.com/FvgmEJL.png)
 #
 ![alt text](https://i.imgur.com/aWzj44Y.png)
+
+
