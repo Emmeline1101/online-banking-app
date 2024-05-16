@@ -43,16 +43,12 @@ Be sure you have the following installed on your development machine:
 + python-dateutil==2.8.1
 + redis==3.5.3
 
-## Install Redis Server
-
-[Redis Quick Start](https://redis.io/topics/quickstart)
+## Project Installation
 
 Run Redis server
 ```bash
 redis-server
 ```
-
-## Project Installation
 
 To setup a local development environment:
 
