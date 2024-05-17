@@ -128,6 +128,11 @@ deactivate
 ```
 ## How to manage data
 go to `http://127.0.0.1:8000/admin`
+if password is forgotten, try:
+```shell
+python manage.py changepassword <username>
+
+```
 ## Images:
 ![Deposit-Page](https://github.com/Emmeline1101/online-banking-app/blob/main/img/Deposit-Page.png)
 #
