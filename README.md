@@ -5,7 +5,7 @@ This is an Online Banking System created using Django Web Framework. And we inte
 ## Web Architecture
 - Frontend:  HTML
 - Backend:   Django
-- Database:  Redis
+- Database:  SQLite & Redis
   
 ## Features
 **Features asked by SWE266P course:**
