@@ -127,8 +127,10 @@ deactivate
 
 ```
 ## Images:
-![alt text](https://i.imgur.com/FvgmEJL.png)
+![Deposit-Page](https://github.com/Emmeline1101/online-banking-app/blob/main/img/Deposit-Page.png)
 #
-![alt text](https://i.imgur.com/aWzj44Y.png)
+![Transaction-Report-Page](https://github.com/Emmeline1101/online-banking-app/blob/main/img/Transaction-Report-Page.png)
+#
+![Withdraw-Page](https://github.com/Emmeline1101/online-banking-app/blob/main/img/Withdraw-Page.png)
 
 
