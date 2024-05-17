@@ -22,7 +22,7 @@ class TransactionRepostView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         if not hasattr(self.request.user, 'account'):
-            messages.error(self.request, "You do not have an account.")
+            messages.error(self.request, "Failed! You do not have an account.")
             return HttpResponseRedirect(reverse('accounts:create_account'))  # redirect to the registry page
 
         form = TransactionDateRangeForm(request.GET or None)
