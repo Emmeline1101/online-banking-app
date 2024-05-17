@@ -21,6 +21,10 @@ class TransactionRepostView(LoginRequiredMixin, ListView):
     form_data = {}
 
     def get(self, request, *args, **kwargs):
+        if not hasattr(self.request.user, 'account'):
+            messages.error(self.request, "You do not have an account.")
+            return HttpResponseRedirect(reverse('accounts:create_account'))  # redirect to the registry page
+
         form = TransactionDateRangeForm(request.GET or None)
         if form.is_valid():
             self.form_data = form.cleaned_data
@@ -54,6 +58,13 @@ class TransactionCreateMixin(LoginRequiredMixin, CreateView):
     model = Transaction
     title = ''
     success_url = reverse_lazy('transactions:transaction_report')
+
+    def dispatch(self, request, *args, **kwargs):
+        # check if accounts exists
+        if not hasattr(self.request.user, 'account'):
+            messages.error(self.request, "You do not have an account.")
+            return HttpResponseRedirect(reverse('accounts:create_account'))
+        return super().dispatch(request, *args, **kwargs)
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
