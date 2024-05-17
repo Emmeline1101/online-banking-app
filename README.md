@@ -126,6 +126,8 @@ redis-cli shutdown
 deactivate
 
 ```
+## How to manage data
+go to `http://127.0.0.1:8000/admin`
 ## Images:
 ![alt text](https://i.imgur.com/FvgmEJL.png)
 #
