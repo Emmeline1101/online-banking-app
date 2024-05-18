@@ -60,7 +60,7 @@ class UserRegistrationView(TemplateView):
 
         return super().get_context_data(**kwargs)
 
-
+# Django naturally has CWE-307 Vulnerability, as it does not limit the amount of login attempts
 class UserLoginView(LoginView):
     template_name='accounts/user_login.html'
     redirect_authenticated_user = True
