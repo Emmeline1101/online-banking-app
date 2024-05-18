@@ -38,6 +38,7 @@ class UserRegistrationForm(UserCreationForm):
     )
     gender = forms.ChoiceField(choices=GENDER_CHOICE)
     birth_date = forms.DateField()
+    initial_amount = forms.DecimalField(max_digits=12, decimal_places=2, help_text='Initial deposit amount')
 
     class Meta:
         model = User
@@ -72,6 +73,7 @@ class UserRegistrationForm(UserCreationForm):
             account_type = self.cleaned_data.get('account_type')
             gender = self.cleaned_data.get('gender')
             birth_date = self.cleaned_data.get('birth_date')
+            initial_amount = self.cleaned_data.get('initial_amount', 0)
 
             UserBankAccount.objects.create(
                 user=user,
@@ -81,6 +83,7 @@ class UserRegistrationForm(UserCreationForm):
                 account_no=(
                     user.id +
                     settings.ACCOUNT_NUMBER_START_FROM
-                )
+                ),
+                balance=initial_amount
             )
         return user
