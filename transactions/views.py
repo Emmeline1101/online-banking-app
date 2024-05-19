@@ -40,6 +40,12 @@ class TransactionRepostView(LoginRequiredMixin, ListView):
 
         if daterange:
             queryset = queryset.filter(timestamp__date__range=daterange)
+            # # Unsafe SQL query implementation
+            # start_date, end_date = daterange.split(' - ')
+            # raw_query = f"SELECT * FROM {self.model._meta.db_table} WHERE account_id = {self.request.user.account.id} AND timestamp BETWEEN '{start_date}' AND '{end_date}'"
+            # cursor = connection.cursor()
+            # cursor.execute(raw_query)
+            # queryset = cursor.fetchall()
 
         return queryset.distinct()
 
