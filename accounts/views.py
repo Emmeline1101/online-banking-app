@@ -4,6 +4,9 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, RedirectView
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.safestring import mark_safe
 
 from .forms import UserRegistrationForm, UserAddressForm
 
@@ -11,6 +14,8 @@ from .forms import UserRegistrationForm, UserAddressForm
 User = get_user_model()
 
 
+# Inject the XSS vulnerability deliberately by removing the Django csrf protection
+@method_decorator(csrf_exempt, name='dispatch')
 class UserRegistrationView(TemplateView):
     model = User
     form_class = UserRegistrationForm
@@ -36,8 +41,8 @@ class UserRegistrationView(TemplateView):
             login(self.request, user)
             messages.success(
                 self.request,
-                (
-                    f'Thank You For Creating A Bank Account. '
+                mark_safe(
+                    f'Thank You For Creating A Bank Account, {self.request.POST.get("first_name")}. '
                     f'Your Account Number is {user.account.account_no}. '
                 )
             )
