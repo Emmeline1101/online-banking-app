@@ -4,9 +4,6 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, RedirectView
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.safestring import mark_safe
 
 from .forms import UserRegistrationForm, UserAddressForm
 
@@ -14,8 +11,6 @@ from .forms import UserRegistrationForm, UserAddressForm
 User = get_user_model()
 
 
-# Inject the XSS vulnerability deliberately by removing the Django csrf protection
-@method_decorator(csrf_exempt, name='dispatch')
 class UserRegistrationView(TemplateView):
     model = User
     form_class = UserRegistrationForm
@@ -41,8 +36,8 @@ class UserRegistrationView(TemplateView):
             login(self.request, user)
             messages.success(
                 self.request,
-                mark_safe(
-                    f'Thank You For Creating A Bank Account, {self.request.POST.get("first_name")}. '
+                (
+                    f'Thank You For Creating A Bank Account. '
                     f'Your Account Number is {user.account.account_no}. '
                 )
             )
@@ -65,7 +60,7 @@ class UserRegistrationView(TemplateView):
 
         return super().get_context_data(**kwargs)
 
-# Django naturally has CWE-307 Vulnerability, as it does not limit the amount of login attempts
+
 class UserLoginView(LoginView):
     template_name='accounts/user_login.html'
     redirect_authenticated_user = True
